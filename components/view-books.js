@@ -20,6 +20,7 @@ function ViewBooks() {
       name: 'Charts',
       path: '/home/charts',
       image: 'https://covers.openlibrary.org/b/isbn/1668001225-M.jpg',
+      url: 'https://ipfs.io/ipfs/QmV5djHc5zQAWyAhfGeJ7AXHQg6LkZDj4PvCoaoMxjRz43',
     },
     {
       name: 'Genres & Mood',
@@ -40,8 +41,13 @@ function ViewBooks() {
   return (
     <div className=" flex pl-32 pt-12 w-screen gap-5">
       {Tabs.map((tabs, index) => (
-        <div className="flex flex-col items-center gap-5">
-          <Image src={tabs.image} width={180} height={279}></Image>
+        <div key={index} className="flex flex-col items-center gap-5">
+          <Image
+            src={tabs.image}
+            width={180}
+            height={279}
+            alt={tabs.name}
+          ></Image>
           <p>{tabs.name}</p>
           <button
             className="w-32 h-5 bg-red-500"

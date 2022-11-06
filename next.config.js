@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['cdn.intra.42.fr', 'covers.openlibrary.org'],
+    unoptimized: true,
   },
 }
 
