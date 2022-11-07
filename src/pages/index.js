@@ -47,7 +47,7 @@ export default function Home({ books }) {
         <div className=" w-24 h-8 relative">
           <Link href="/">
             <a>
-              <Image src="logo_rad.svg" layout="fill"></Image>
+              <Image src="static/logo_rad.svg" layout="fill"></Image>
             </a>
           </Link>
         </div>
