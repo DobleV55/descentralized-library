@@ -3,7 +3,42 @@ import Link from 'next/link'
 import PageLayout from './PageLayout'
 import { downloadCid } from '../utils/download_cid'
 import { FiHeart, FiDownload, FiSearch } from 'react-icons/fi'
-import Search from '../../components/Search'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+
+function Search() {
+  const [input, setInput] = useState('')
+  const router = useRouter()
+
+  useEffect(() => {
+    if (input != '') {
+      router.push('?search=' + input)
+      console.log('You searched for ', input)
+    } else {
+      router.push('/')
+    }
+  }, [input])
+
+  const search = (e) => {
+    e.preventDefault()
+    setInput(e.target.value)
+  }
+
+  return (
+    <div className="border-solid border-2 border-black rounded-md w-96 h-10 flex items-center px-5">
+      <input
+        value={input}
+        onChange={search}
+        className="placeholder:italic placeholder:text-gray-400 bg-transparent w-full rounded-md  shadow-sm focus:outline-none sm:text-sm"
+        placeholder="Search for title, author or ISBN"
+        type="text"
+      />
+      <button>
+        <FiSearch></FiSearch>
+      </button>
+    </div>
+  )
+}
 
 export default function Home({ books }) {
   return (
