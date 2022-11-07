@@ -99,12 +99,12 @@ export async function getServerSideProps(context) {
   let books = []
   if (context.query.search) {
     const search = context.query.search
-    const url = `http://localhost:3000/api/books/${search}`
+    const url = `https://descentralized-library.vercel.app/api/books/${search}`
     const res = await fetch(url)
     const books_searched = await res.json()
     books = books.concat(books_searched)
   } else {
-    const url = `http://localhost:3000/api/books`
+    const url = `https://descentralized-library.vercel.app/api/books`
     const res = await fetch(url)
     books = await res.json()
   }
