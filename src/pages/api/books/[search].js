@@ -7,6 +7,7 @@ export default async (req, res) => {
   switch (method) {
     case 'GET':
       try {
+        /*
         const books = await Book.aggregate([
           {
             $search: {
@@ -25,8 +26,7 @@ export default async (req, res) => {
             $limit: 50,
           },
         ])
-
-        /*
+*/
         const books = await Book.aggregate([
           {
             $search: {
@@ -50,7 +50,7 @@ export default async (req, res) => {
             $limit: 50,
           },
         ])
-        */
+
         if (!books) {
           return res.status(400).json({ success: false })
         }

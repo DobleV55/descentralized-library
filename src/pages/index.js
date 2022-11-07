@@ -59,9 +59,13 @@ export default function Home({ books }) {
 
       <div className="px-36 pt-40">
         <div className=" grid grid-cols-5 max-w-full gap-20">
-          {books.map((book, index) => (
-            <ViewBook key={index} book={book}></ViewBook>
-          ))}
+          {books.length > 0 ? (
+            books.map((book, index) => (
+              <ViewBook key={index} book={book}></ViewBook>
+            ))
+          ) : (
+            <div className="w-full flex">Nothing found</div>
+          )}
         </div>
       </div>
     </PageLayout>
