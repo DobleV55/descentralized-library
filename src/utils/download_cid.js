@@ -5,5 +5,5 @@ export async function downloadCid(req, res) {
   const response = await fetch(base_url + req.cid)
 
   const blob = await response.blob()
-  FileDownload(blob, `${req.title}${req.extension}`)
+  FileDownload(blob, `${req.title}.${req.extension}`)
 }
