@@ -73,19 +73,35 @@ export default function Home({ books }) {
 }
 
 function ViewBook({ book }) {
+  const isbn = book.identifier
+  if (isbn.includes(',')) {
+    let identifiers = isbn.split(',')
+    for (let identifier of identifiers) {
+      if (identifier.length == 13) {
+        book.identifier = identifier
+      }
+    }
+  }
+
   return (
     <div className="flex flex-col gap-2 w-[190px]">
       <Image
         className="hover:cursor-pointer rounded-xl"
         src={
-          book.image
-            ? book.image
-            : `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`
+          book.image.includes('libgen.is')
+            ? `https://covers.openlibrary.org/b/isbn/${book.identifier}-M.jpg`
+            : book.image
         }
         width={190}
         height={280}
         alt={book.title}
-        onClick={() => downloadCid({ title: book.title, cid: book.cid })}
+        onClick={() =>
+          downloadCid({
+            title: book.title,
+            cid: book.cid,
+            extension: book.extension,
+          })
+        }
       ></Image>
       <p>{book.title}</p>
       <p className="text-gray-400">{book.author}</p>

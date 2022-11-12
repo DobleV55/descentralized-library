@@ -39,6 +39,7 @@ const bookSchema = new Schema(
     },
   },
   {
+    collection: 'books',
     timestamps: true,
     versionKey: false,
   }

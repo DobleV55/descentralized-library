@@ -30,7 +30,7 @@ export default async (req, res) => {
         const books = await Book.aggregate([
           {
             $search: {
-              index: 'default',
+              index: 'lucene',
               compound: {
                 must: [
                   {
